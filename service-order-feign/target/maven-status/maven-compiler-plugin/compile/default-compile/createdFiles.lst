@@ -1,0 +1,4 @@
+com\itmayiedu\servie\MemberFeign.class
+com\itmayiedu\error\MemberFeignService.class
+com\itmayiedu\OrderFeignApp.class
+com\itmayiedu\controller\FeignMemberController.class

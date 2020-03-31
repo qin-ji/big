@@ -1,0 +1,16 @@
+server:
+  port: 8880
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+#    registerWithEureka: false
+#    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+logging:  
+  level:  
+    com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: ERROR

@@ -1,0 +1,14 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka/
+server:
+  port: 8884
+  tomcat:
+    max-threads: 50
+spring:
+  application:
+    name: service-order-feign
+logging:
+  level:  
+    com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: WARN

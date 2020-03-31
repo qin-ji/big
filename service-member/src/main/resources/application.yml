@@ -1,0 +1,56 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka/
+server:
+  port: 8881
+spring:
+  application:
+    name: service-member
+  datasource:
+      name: test
+      url: jdbc:mysql://127.0.0.1:3306/itmayiedu-member?characterEncoding=UTF-8
+      username: root
+      password: root
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+    ##activemq连接信息
+  activemq:
+    broker-url: tcp://140.143.197.165:61616
+    in-memory: true
+    pool:
+      enabled: false
+   ##mail连接信息
+  mail:
+    host: smtp.163.com
+    username: yushengjun20180315@163.com
+    password: itmayiedu123456
+    enable:  true
+    smtp:
+      auth: true
+    starttls:
+      enable: true
+      required: true  
+##email Text
+msg: 
+  subject: 红红火火恍恍惚惚--邮件信息
+  text:  恭喜您的账户{},注册-红红火火恍恍惚惚-成功!
+#
+##队列
+messages:
+   queue: messages_queue            
+        

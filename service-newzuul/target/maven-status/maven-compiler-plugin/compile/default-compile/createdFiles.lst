@@ -1,0 +1,12 @@
+com\itmayidu\base\CustomZuulConfig.class
+com\itmayidu\fallback\ProviderFallBack$1.class
+com\itmayidu\ratelimit\KeyGenerator.class
+com\itmayidu\fallback\MyFilter.class
+com\itmayidu\fallback\ErrorFilter.class
+com\itmayidu\fallback\ProviderFallBack.class
+com\itmayidu\base\CustomRouteLocator$ZuulRouteVO.class
+com\itmayidu\controller\ErrorHandlerController.class
+com\itmayidu\service\RefreshRouteService.class
+com\itmayidu\base\CustomRouteLocator.class
+com\itmayidu\AppZuull.class
+com\itmayidu\controller\ZuulController.class

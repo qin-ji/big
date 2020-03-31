@@ -1,0 +1,96 @@
+#   在spring boot2.0下 docker注册IP问题，因为在docker内注册的主机名称是容器ID，但是zuul转发的时候需要根据容器IP是转发不了的，所以会报错  
+#eureka.instance.ip-address=true
+#eureka.instance.prefer-ip-address=true
+#eureka.instance.instance-id=${spring.cloud.client.ip-address}:${server.port}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka/
+#  instance:
+#    ip-address: true
+#    prefer-ip-address: true
+#    instance-id:  ${spring.cloud.client.ip-address}:${server.port}  
+server:
+  port: 8882
+feign:
+   hystrix:
+     enabled: true
+spring:
+  application:
+    name: service-zuul
+  redis:
+    host: 127.0.0.1
+    password: 
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1    
+  datasource:
+        name: test
+        url: jdbc:mysql://192.168.1.117:3306/itmayiedu-member?characterEncoding=UTF-8
+        username: root
+        password: root
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+zuul:
+#  routes: 
+#    api-a: 
+#      strip-prefix: true
+#      path: /api-member/**
+#      service-id: service-member
+  ratelimit:    
+    key-prefix: service-member  #对应用来标识请求的key的前缀
+    enabled: true
+    repository: REDIS  #对应存储类型（用来存储统计信息）
+    behind-proxy: true  #代理之后
+    default-policy: #可选 - 针对所有的路由配置的策略，除非特别配置了policies
+     limit: 10 #可选 - 每个刷新时间窗口对应的请求数量限制
+     quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
+     refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
+     type: #可选 限流方式
+      - user
+      - origin
+      - url
+#    policies:
+#      service-member:  #特定的路由
+#        limit: 20 #可选- 每个刷新时间窗口对应的请求数量限制
+#        quota: 1000 #可选-  每个刷新时间窗口对应的请求时间限制（秒）
+#        refresh-interval: 60 # 刷新时间窗口的时间，默认值 (秒)
+#        type: #可选 限流方式
+#            - user
+#            - origin
+#            - url
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,health,info,routes
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+    
+
+      

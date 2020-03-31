@@ -1,0 +1,11 @@
+com\qj\entity\MenRoleEntity.class
+com\qj\entity\UserEntity.class
+com\qj\entity\RoleEntity.class
+com\qj\entity\ZuulEntity.class
+com\qj\Application.class
+com\qj\entity\ImageEntity.class
+com\qj\entity\Men.class
+com\qj\entity\UserRoleEntity.class
+com\qj\entity\ButtonEntity.class
+com\qj\entity\MenEntity.class
+com\qj\entity\TableUtils.class

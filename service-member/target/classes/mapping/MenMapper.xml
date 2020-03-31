@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qj.dao.MenMapper">
+  <resultMap id="BaseResultMap" type="com.qj.entity.Men">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="men_name" jdbcType="VARCHAR" property="menName" />
+    <result column="men_url" jdbcType="VARCHAR" property="menUrl" />
+    <result column="men_id" jdbcType="INTEGER" property="menId" />
+    <result column="men_button_url" jdbcType="VARCHAR" property="menButtonUrl" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="men_button_style" jdbcType="VARCHAR" property="menButtonStyle" />
+    <result column="men_type" jdbcType="VARCHAR" property="menType" />
+    <result column="men_image" jdbcType="VARCHAR" property="menImage" />
+    <result column="men_button_image" jdbcType="VARCHAR" property="menButtonImage" />
+  </resultMap>
+  <insert id="insert" parameterType="com.qj.entity.Men">
+    insert into men (id, men_name, men_url, 
+      men_id, men_button_url, parent_id, 
+      men_button_style, men_type, men_image, 
+      men_button_image)
+    values (#{id,jdbcType=INTEGER}, #{menName,jdbcType=VARCHAR}, #{menUrl,jdbcType=VARCHAR}, 
+      #{menId,jdbcType=INTEGER}, #{menButtonUrl,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{menButtonStyle,jdbcType=VARCHAR}, #{menType,jdbcType=VARCHAR}, #{menImage,jdbcType=VARCHAR}, 
+      #{menButtonImage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qj.entity.Men">
+    insert into men
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menName != null">
+        men_name,
+      </if>
+      <if test="menUrl != null">
+        men_url,
+      </if>
+      <if test="menId != null">
+        men_id,
+      </if>
+      <if test="menButtonUrl != null">
+        men_button_url,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="menButtonStyle != null">
+        men_button_style,
+      </if>
+      <if test="menType != null">
+        men_type,
+      </if>
+      <if test="menImage != null">
+        men_image,
+      </if>
+      <if test="menButtonImage != null">
+        men_button_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menName != null">
+        #{menName,jdbcType=VARCHAR},
+      </if>
+      <if test="menUrl != null">
+        #{menUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menId != null">
+        #{menId,jdbcType=INTEGER},
+      </if>
+      <if test="menButtonUrl != null">
+        #{menButtonUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="menButtonStyle != null">
+        #{menButtonStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="menType != null">
+        #{menType,jdbcType=VARCHAR},
+      </if>
+      <if test="menImage != null">
+        #{menImage,jdbcType=VARCHAR},
+      </if>
+      <if test="menButtonImage != null">
+        #{menButtonImage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
